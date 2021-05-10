@@ -63,7 +63,7 @@ export const queryPhone = (number) => {
     phoneWithNationCode,
     phoneWithPlusNationCode,
     phoneWithNationCodeZero,
-    phoneWithPlusNationCodeZero,
+    phoneWithPlusNationCodeZero
   };
 };
 
@@ -84,3 +84,7 @@ export function changeAlias(str) {
   str = str.replace(/Đ/g, 'D');
   return str;
 }
+
+
+export const customGenerationFunction = () =>
+(Math.random().toString(36) + '00000000000').substring(2, 16);

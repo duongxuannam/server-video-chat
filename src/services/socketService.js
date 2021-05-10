@@ -1,5 +1,6 @@
 import SocketIO from 'socket.io';
 import logger from 'utils/logger';
+import { socketVideo } from './video-call';
 
 class _SocketService {
   constructor() {
@@ -20,6 +21,9 @@ class _SocketService {
 
     this.io.on("connection", (socket) => {
       logger.info('start' );
+
+      //v2
+      socketVideo(socket);
 
       socket.on("join-room", (roomId, userId, userName) => {
         logger.info('join');

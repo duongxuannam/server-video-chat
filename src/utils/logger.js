@@ -25,7 +25,7 @@ const logger = {
     console.log(`
       ${chalk.blue(`Press ${chalk.italic('CTRL-C')} to stop`)}
     `);
-  },
+  }
 };
 
 module.exports = logger;

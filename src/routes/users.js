@@ -14,10 +14,8 @@ routes.get('/', async (req, res) => {
             password:'pass'
      });
         const user = await userInstance.save();
-        console.log('user ', user);
         res.json(user);
     } catch (e) {
-        console.log('loi j moi dc ', e);
         res.send('errr', e);
     }
     // res.json(user);
@@ -47,7 +45,8 @@ routes.get('/', async (req, res) => {
 // // Get user info account
 // routes.get('/me', authController.authenticateUser, userController.getUser);
 // // Change user password
-// routes.put('/me/change-password', authController.authenticateUser, userController.changePassword);
+// routes.put('/me/change-password',
+// authController.authenticateUser, userController.changePassword);
 // // Update user account
 // routes.put('/me', authController.authenticateUser, userController.updateAccount);
 

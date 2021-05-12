@@ -3,11 +3,9 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import { settingConfig } from 'services';
 import routes from 'routes';
-import {ExpressPeerServer} from 'peer';
 import path from 'path';
 import logger from 'utils/logger';
 import configs from './config';
-import { customGenerationFunction } from 'utils/commons';
 
 const app = express();
 
@@ -33,14 +31,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/../front-end/build'));
 
-const peerServer = ExpressPeerServer(server,
-  {
-    debug:true,
-    path:'/',
-    generateClientId: customGenerationFunction
-  });
 
-app.use('/mypeer', peerServer);
 
 app.use('/', routes);
 

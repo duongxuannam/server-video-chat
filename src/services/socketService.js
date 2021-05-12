@@ -1,6 +1,6 @@
 import SocketIO from 'socket.io';
 import logger from 'utils/logger';
-import { socketVideo } from './video-call';
+// import { socketVideo } from './video-call';
 
 class _SocketService {
   constructor() {
@@ -19,33 +19,27 @@ class _SocketService {
 
 
 
-    this.io.on("connection", (socket) => {
-      logger.info('start' );
+    // this.io.on("connection", (socket) => {
+    //   logger.info('start' );
 
-      //v2
-      socketVideo(socket);
+    //   //v2
+    //   socketVideo(socket);
 
-      socket.on("join-room", (roomId, userId, userName) => {
-        logger.info('join');
-        socket.join(roomId);
-        socket.to(roomId).broadcast.emit("user-connected", userId);
-        socket.on("message", (message) => {
-          this.io.to(roomId).emit("createMessage", message, userName);
-        });
-      });
-    });
+    //   socket.on("join-room", (roomId, userId, userName) => {
+    //     logger.info('join');
+    //     socket.join(roomId);
+    //     socket.to(roomId).broadcast.emit("user-connected", userId);
+    //     socket.on("message", (message) => {
+    //       this.io.to(roomId).emit("createMessage", message, userName);
+    //     });
+    //   });
+    // });
 
 
 
 
     this.io.sockets.on('connection', (socket) => {
 
-
-      logger.info('start 2' );
-      socket.on("join-room", (roomId, userId, userName) => {
-        logger.info('join');
-
-      });
 
 
 
@@ -114,8 +108,8 @@ class _SocketService {
         socket.to(roomId).emit('leaveRoom', id);
       });
 
-      socket.on('getRooms', (roomId) => {
-        this.io.to(socket.id).emit('getRooms', rooms[roomId]);
+      socket.on('getRoom', (roomId) => {
+        this.io.to(socket.id).emit('getRoom', rooms[roomId]);
       });
 
       socket.on('candidateRoomVideo', (candidate, id) => {

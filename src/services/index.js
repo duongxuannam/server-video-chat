@@ -1,10 +1,10 @@
 import i18n from 'i18n';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 import FirebaseAdmin from 'services/firebaseAdmin';
 import DynamicValues from 'services/dynamicValues';
 import SocketService from 'services/socketService';
 import logger from 'utils/logger';
-import configs from '../config';
+// import configs from '../config';
 
 export const settingConfig = (server) => {
     FirebaseAdmin.init();
@@ -23,22 +23,22 @@ export const settingConfig = (server) => {
 
 
     // Connect MongoDB
-    mongoose.connect(configs.MONGO_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true
-    }).then(() => logger.info('Database connected!') )
-        .catch(err => logger.error('err' + err));
-    // mongoose.connect(
-    //     'mongodb://duongxuannam:duongxuannam@datalake0-6ibyt.a.query.mongodb.net/
-    // TryYourBest?ssl=true&authSource=admin',
-    //     { useNewUrlParser: true });
-    const db = mongoose.connection;
-    db.on('open', () => {
-        logger.info('DB connected');
-    });
+    // mongoose.connect(configs.MONGO_URL, {
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true,
+    //     useCreateIndex: true
+    // }).then(() => logger.info('Database connected!') )
+    //     .catch(err => logger.error('err' + err));
+    // // mongoose.connect(
+    // //     'mongodb://duongxuannam:duongxuannam@datalake0-6ibyt.a.query.mongodb.net/
+    // // TryYourBest?ssl=true&authSource=admin',
+    // //     { useNewUrlParser: true });
+    // const db = mongoose.connection;
+    // db.on('open', () => {
+    //     logger.info('DB connected');
+    // });
 
-    db.on('error', (err) => logger.error(err));
+    // db.on('error', (err) => logger.error(err));
 
     // keep server running
     process.on('uncaughtException', (err) =>

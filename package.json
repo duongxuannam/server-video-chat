@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\"",
     "dev": "nodemon --exec babel-node src/index.js",
     "server": "node dist/index.js",
-    "start": "node dist/index.js",
+    "start": "sh ./startScript.sh",
     "build": "babel src --out-dir dist",
     "build:web": "sh ./sh/setUp.sh"
   },

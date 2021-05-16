@@ -86,7 +86,7 @@ class _SocketService {
         if (room) {
           rooms[roomId].users[id] = user;
         }
-        socket.to(roomId).emit('joinRoom', id);
+        socket.to(roomId).emit('joinRoom', id, rooms);
       });
 
       socket.on('leaveRoom', (roomId) => {

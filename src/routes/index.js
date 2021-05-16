@@ -25,7 +25,7 @@ routes.use((err, req, res, next) => {
 
 routes.get("/test", (req, res) => {
   res.json({a:'ok'});
-  SocketService.getIO().sockets.emit('joinRoom', 3123131231);
+  // SocketService.getIO().sockets.emit('joinRoom', 3123131231);
 });
 
 

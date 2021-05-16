@@ -3,12 +3,15 @@ import i18n from 'i18n';
 import FirebaseAdmin from 'services/firebaseAdmin';
 import DynamicValues from 'services/dynamicValues';
 import SocketService from 'services/socketService';
+import {useCor} from 'services/cors';
+
 import logger from 'utils/logger';
 // import configs from '../config';
 
-export const settingConfig = (server) => {
+export const settingConfig = (server, app) => {
     FirebaseAdmin.init();
     DynamicValues.init();
+    useCor(app);
     // ScheduleService.startSendMessage();
     SocketService.start(server);
 

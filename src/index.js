@@ -10,7 +10,6 @@ import configs from './config';
 const app = express();
 
 
-
 const port = configs.PORT || 1995;
 
 const http = require('http');
@@ -26,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+
 //ejs
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
@@ -33,11 +33,10 @@ app.use(express.static(__dirname + '/../front-end/build'));
 
 
 
+
+
+settingConfig(server, app);
 app.use('/', routes);
-
 server.listen(port, () => logger.info(`> Ready on port ${port}`));
-
-settingConfig(server);
-
 
 

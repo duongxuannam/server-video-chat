@@ -1,5 +1,5 @@
-import SocketIO from 'socket.io';
-import logger from 'utils/logger';
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _socket = _interopRequireDefault(require("socket.io"));
+var _logger = _interopRequireDefault(require("../utils/logger"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // import { socketVideo } from './video-call';
 
 class _SocketService {
@@ -11,16 +11,16 @@ class _SocketService {
 
   start(server) {
     if (!this.io) {
-      this.io = SocketIO(server, {
+      this.io = (0, _socket.default)(server, {
         cors: {
-            origin: "*",
-            methods: ["GET", "POST"]
-        }
-      });
+          origin: "*",
+          methods: ["GET", "POST"] } });
+
+
     }
     const rooms = {};
 
-    this.io.sockets.on('error', (e) => logger.error(e));
+    this.io.sockets.on('error', (e) => _logger.default.error(e));
 
 
 
@@ -76,16 +76,16 @@ class _SocketService {
         const id = socket.id;
         const user = {
           socketId: id,
-          name
-        };
+          name };
+
         if (!room) {
           const newRoom = {
             roomId,
             nameRoom,
             users: {
-              [id]: user
-            }
-          };
+              [id]: user } };
+
+
           rooms[roomId] = newRoom;
         }
         if (room) {
@@ -142,9 +142,9 @@ class _SocketService {
 
   getConnections() {
     return this.connections;
-  }
-}
+  }}
 
-const SocketService = new _SocketService();
 
-export default SocketService;
+const SocketService = new _SocketService();var _default =
+
+SocketService;exports.default = _default;
